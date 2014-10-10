@@ -8,4 +8,6 @@ You can get information about LibriVox at <http://www.librivox.org>.
 
 3) Access http://server_root/librivox_statistics.html
 
-Mar/03/2014
+4) Example: http://ekzample.org/librivox/statistics/
+
+Oct/01/2014
