@@ -1,3 +1,5 @@
-#mv combined.json combined.json_old
 #
-cp ~/librivox/api/git/new_api/ext/gen_combined/combined.json .
+ls -al combined.json
+cp -p ~/librivox/api/git/new_api/ext/gen_combined/combined.json .
+ls -al combined.json
+#
