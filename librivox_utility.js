@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------
 //	librivox_utility.js
 //
-//					Aug/01/2012
+//					Dec/02/2014
 //
 // -----------------------------------------------------------------------
 function convert_to_second (totaltime)
@@ -39,12 +39,25 @@ function convert_to_second (totaltime)
 
 		}
 
+	if (second.toString () == "NaN")
+		{
+		second = 0;
+		}
+
 	return	second;
 }
 
 // -----------------------------------------------------------------------
 function convert_to_hour (second)
 {
+	var str_ret = "";
+
+	if (second.toString () == "NaN")
+		{
+		str_ret = "--:--:--";
+		}
+	else
+		{ 
 	var hour = Math.floor (second / 3600);
 
 	var min = Math.floor ((second - hour * 3600) / 60);
@@ -61,7 +74,8 @@ function convert_to_hour (second)
 		ss = "0" + ss;
 		}
 
-	var str_ret = "" + hour + ":" + min + ":" + ss;
+	str_ret = "" + hour + ":" + min + ":" + ss;
+		}
 
 	return	str_ret;
 }
