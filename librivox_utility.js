@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------
 //	librivox_utility.js
 //
-//					Dec/02/2014
+//					Dec/04/2014
 //
 // -----------------------------------------------------------------------
 function convert_to_second (totaltime)
@@ -52,29 +52,50 @@ function convert_to_hour (second)
 {
 	var str_ret = "";
 
+	var day = 0;
+
 	if (second.toString () == "NaN")
 		{
 		str_ret = "--:--:--";
 		}
 	else
 		{ 
-	var hour = Math.floor (second / 3600);
+		var hour = Math.floor (second / 3600);
 
-	var min = Math.floor ((second - hour * 3600) / 60);
+		if (24 < hour)
+			{
+			day = Math.floor (hour / 24);
+			hour = hour - day * 24;
+			}
 
-	if (min < 10)
-		{
-		min = "0" + min;
-		}
 
-	var ss = second - hour * 3600 - min * 60;
+		var sec_tmp = (day * 24 + hour) * 3600;
 
-	if (ss < 10)
-		{
-		ss = "0" + ss;
-		}
+		var min = Math.floor ((second - sec_tmp) / 60);
 
-	str_ret = "" + hour + ":" + min + ":" + ss;
+		var ss = second - sec_tmp - min * 60;
+
+		if (hour < 10)
+			{
+			hour = "0" + hour;
+			}
+
+		if (min < 10)
+			{
+			min = "0" + min;
+			}
+
+		if (ss < 10)
+			{
+			ss = "0" + ss;
+			}
+
+		str_ret = "" + hour + ":" + min + ":" + ss;
+
+		if (0 < day)
+			{
+			str_ret = day + ":" + str_ret;
+			}
 		}
 
 	return	str_ret;
