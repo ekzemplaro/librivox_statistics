@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------
 //	display_books.js
 //
-//					Mar/21/2014
+//					Feb/06/2016
 //
 // -----------------------------------------------------------------------
 // [4]:
@@ -144,9 +144,10 @@ function td_id_gen_proc (key,dd_cur)
 
 	if ("url_iarchive" in dd_cur)
 		{
-		if (5 < dd_cur.url_iarchive.length)
+		if (5 < dd_cur.url_librivox.length)
 			{
-		out_str += "<a href=\"" + dd_cur.url_iarchive + "\">";
+//		out_str += "<a href=\"" + dd_cur.url_iarchive + "\">";
+		out_str += "<a href=\"" + dd_cur.url_librivox + "\">";
 		out_str += b_id +  "</a>";
 			}
 		else
@@ -172,9 +173,10 @@ function td_title_gen_proc (dd_cur)
 
 	if ("url_librivox" in dd_cur)
 		{
-		if (5 < dd_cur.url_librivox.length)
+		if (5 < dd_cur.url_iarchive.length)
 			{ 
-		out_str += "<a href=\"" + dd_cur.url_librivox + "\">";
+//		out_str += "<a href=\"" + dd_cur.url_librivox + "\">";
+		out_str += "<a href=\"" + dd_cur.url_iarchive + "\">";
 		out_str += dd_cur.title + "</a>";
 			}
 		else
