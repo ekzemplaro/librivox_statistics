@@ -1,17 +1,17 @@
 // -----------------------------------------------------------------------
 //	librivox_statistics.js
 //
-//					Feb/02/2016
+//					Mar/02/2016
 //
 // -----------------------------------------------------------------------
 jQuery (function ()
 {
 	jQuery("#outarea_aa").html
-		("*** librivox_statistics *** start *** Feb/02/2016 ***");
+		("*** librivox_statistics *** start *** Mar/02/2016 ***");
 
 	var file_json = "latest_on_going.json";
 
-	var text_months = gen_month_button_row_proc (2016,2);
+	var text_months = gen_month_button_row_proc (2016,3);
 	text_months += gen_month_button_row_proc (2015,12);
 	text_months += gen_month_button_row_proc (2014,12);
 	text_months += gen_month_button_row_proc (2013,12);
@@ -27,7 +27,7 @@ jQuery (function ()
 	fetch_json_proc (text_months,file_json);
 
 	jQuery("#outarea_hh").html
-		("*** librivox_statistics *** end *** Feb/02/2016 ***");
+		("*** librivox_statistics *** end *** Mar/02/2016 ***");
 });
 
 // -----------------------------------------------------------------------
