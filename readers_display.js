@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
 //	readers_display.js
 //
-//					Jul/05/2015
+//					May/08/2016
 //
 // ---------------------------------------------------------------
 // [8]:
@@ -127,27 +127,14 @@ function convert_to_reader_proc (book_in)
 
 	for (var key in book_in)
 		{
-//		var readers = book_in[key].readers;
 		var readers = book_in[key]['readers'];
 
-//		if ((reader=="object") && ("length" in reader))
-//		if (reader instanceof Array)
-//			{
-//			for (var it=0; it< readers.length; it++)
-			for (var it in readers)
-				{
-				data_readers = data_add_proc (key,readers[it],data_readers);
-				}
-/*
-			}
-		else
+		for (var it in readers)
 			{
-			data_readers = data_add_proc (key,reader,data_readers);
+			data_readers = data_add_proc (key,readers[it],data_readers);
 			}
-*/
 
 		}
-
 
 	return	data_readers;
 }
@@ -199,6 +186,7 @@ var str_tmp = "*** sorted_readers_display_50_proc *** array_sorted.length = " + 
 	str_tmp += "*** nn_out = " + nn_out + '<br />';
 	str_tmp += "*** nnx = " + nnx + '<br />';
 jQuery ("#outarea_dd").html (str_tmp);
+
 	var array_aa = new Array (nnx);
 
 	for (var it=0; it< array_aa.length; it++)

@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------
 //	display_books.js
 //
-//					Feb/06/2016
+//					May/08/2016
 //
 // -----------------------------------------------------------------------
 // [4]:
@@ -146,7 +146,6 @@ function td_id_gen_proc (key,dd_cur)
 		{
 		if (5 < dd_cur.url_librivox.length)
 			{
-//		out_str += "<a href=\"" + dd_cur.url_iarchive + "\">";
 		out_str += "<a href=\"" + dd_cur.url_librivox + "\">";
 		out_str += b_id +  "</a>";
 			}
@@ -175,7 +174,6 @@ function td_title_gen_proc (dd_cur)
 		{
 		if (5 < dd_cur.url_iarchive.length)
 			{ 
-//		out_str += "<a href=\"" + dd_cur.url_librivox + "\">";
 		out_str += "<a href=\"" + dd_cur.url_iarchive + "\">";
 		out_str += dd_cur.title + "</a>";
 			}
@@ -202,7 +200,9 @@ function td_author_gen_proc (dd_cur)
 
 	if ("authors" in dd_cur)
 		{
-	out_str += "a" + dd_cur.authors;
+	out_str += "<a href='https://librivox.org/author/" + dd_cur.authors;
+	out_str += "'>a" + dd_cur.authors + "</a>";
+//	out_str += "a" + dd_cur.authors;
 		}
 	else
 		{
