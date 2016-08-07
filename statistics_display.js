@@ -1,38 +1,50 @@
 // -----------------------------------------------------------------------
 //	statistics_display.js
 //
-//					Nov/27/2013
+//					Aug/07/2016
 //
 // -----------------------------------------------------------------------
 // [6]:
 function statistics_display_proc (text_months,data_received)
 {
 	jQuery("#outarea_bb").html
-		("*** statistics_display *** Nov/27/2013 ***");
+		("*** statistics_display *** Aug/06/2016 ***");
 
 	jQuery("#menu").html (text_months);
 
-	display_data_proc (data_received,"all");
+	display_data_procxx (data_received,"All");
 
-	jQuery ("button.month").click (function ()
+	jQuery (".year_month").change (function ()
   		{
-		var month = this.id;
+		var year = jQuery ('[name=year]').val();
+		var month = jQuery ('[name=month]').val();
 
-		jQuery ("button.month").css ("color","black");
-		jQuery ("button#" + this.id).css ("color","blue");
+		var year_month = "" + year + "-" + month
 
-		display_data_proc (data_received,month);
+		if (month === "All")
+			{
+			year_month = year
+			} 
+
+		var str_tmp = ""
+		str_tmp += "year = " + year + "<br />"
+		str_tmp += "month = " + month + "<br />"
+		str_tmp += "year_month = " + year_month + "<br />"
+
+		jQuery("#outarea_cc").html (str_tmp)
+
+		display_data_procxx (data_received,year_month);
 		});
 }
 
 // -----------------------------------------------------------------------
 // [6-4]:
-function display_data_proc (data_received,month)
+function display_data_procxx (data_received,year_month)
 {
-	var data_out = filter_completed_proc (month,data_received);
+	var data_out = filter_completed_procxx (data_received,year_month);
 
 	var languages = sum_by_languge_proc (data_out);
-	var str_summary = summary_gen_proc (month,languages);
+	var str_summary = summary_gen_proc (year_month,languages);
 
 	jQuery("#summary").html (str_summary);
 
@@ -40,6 +52,7 @@ function display_data_proc (data_received,month)
 	jQuery("#contents").html (out_str);
 
 	delete out_str;
+
 }
 
 // -----------------------------------------------------------------------

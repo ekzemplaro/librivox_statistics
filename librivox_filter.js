@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------
 //	librivox_filter.js
 //
-//					Oct/27/2013
+//					Aug/07/2016
 //
 // -----------------------------------------------------------------------
 function filter_going_proc (going_in,data_in)
@@ -201,11 +201,11 @@ function filter_group_proc (group_in,data_in)
 }
 
 // -----------------------------------------------------------------------
-function filter_completed_proc (month,data_in)
+function filter_completed_procxx (data_in,year_month)
 {
 	var data_out = new Object ();
 
-	if (month === "all")
+	if (year_month === "All")
 		{
 		for (var key in data_in)
 			{
@@ -225,7 +225,7 @@ function filter_completed_proc (month,data_in)
 			{
 			ddx = data_in[key].publicdate;
 
-			if (0 <= ddx.indexOf (month))
+			if (0 <= ddx.indexOf (year_month))
 				{
 				data_out[key] = data_in[key];
 				}

@@ -1,65 +1,57 @@
 // -----------------------------------------------------------------------
 //	librivox_statistics.js
 //
-//					Jul/03/2016
+//					Aug/07/2016
 //
 // -----------------------------------------------------------------------
 jQuery (function ()
 {
 	jQuery("#outarea_aa").html
-		("*** librivox_statistics *** start *** Jul/03/2016 ***");
+		("*** librivox_statistics *** start *** Aug/07/2016 ***");
 
 	var file_json = "latest_on_going.json";
 
-	var text_months = gen_month_button_row_proc (2016,7);
-	text_months += gen_month_button_row_proc (2015,12);
-	text_months += gen_month_button_row_proc (2014,12);
-	text_months += gen_month_button_row_proc (2013,12);
-	text_months += gen_month_button_row_proc (2012,12);
-	text_months += gen_month_button_row_proc (2011,12);
-	text_months += gen_month_button_row_proc (2010,12);
-	text_months += gen_month_button_row_proc (2009,12);
-	text_months += gen_month_button_row_proc (2008,12);
-	text_months += gen_month_button_row_proc (2007,12);
-	text_months += gen_month_button_row_proc (2006,12);
-	text_months += gen_month_button_row_proc (2005,12);
+
+	var text_months = '<select class="year_month" name="year">'
+
+	text_months += '<option value="All">All</option>'
+
+	for (var year=2016; 2005 <= year; year = year-1)
+		{
+		text_months += '<option value="' + year + '">' + year + '</option>'
+		}
+	text_months += '</select>'
+	text_months += '&nbsp&nbsp';
+
+//	var month_array = new Array ("All","Jan","Feb","Mar","Apr","May","Jun",
+//		"Jul","Aug","Sep","Oct","Nov","Dec");
+
+	var month_array = new Array ("All","01","02","03","04","05","06",
+		"07","08","09","10","11","12");
+
+	text_months += '<select class="year_month" name="month">'
+
+	for (var it in month_array)
+		{
+		var month=month_array[it]
+		text_months += '<option value="' + month + '">' + month + '</option>'
+		}
+	text_months += '</select>'
 
 	fetch_json_proc (text_months,file_json);
 
 	jQuery("#outarea_hh").html
-		("*** librivox_statistics *** end *** Jul/03/2016 ***");
+		("*** librivox_statistics *** end *** Aug/07/2016 ***");
 });
 
 // -----------------------------------------------------------------------
 // [2]:
 function gen_month_button_row_proc (year,nn_month)
 {
-	var month_array = new Array ("Jan","Feb","Mar","Apr","May","Jun",
-		"Jul","Aug","Sep","Oct","Nov","Dec");
-
-	var button_head = "<button class=\"month\" id=\"";
-	var str_ret = button_head + year + "\">" + year + "</button>";
-
-	str_ret += '&nbsp&nbsp';
-
-	for (var imonth=0; imonth < nn_month; imonth++)
-		{
-		if ((imonth % 3) === 0)
-			{
-			str_ret += '&nbsp';
-			}
-
-		str_ret += button_head + year_month_gen_proc (year,imonth) + "\">"
-			+ month_array[imonth] + "</button>&nbsp";
-		}
-
-	str_ret += "<br />";
-
-	return	str_ret;
 }
 
 // -----------------------------------------------------------------------
-function year_month_gen_proc (year, imonth)
+function year_month_gen_procxx (year, imonth)
 {
 	var month = imonth + 1;
 
